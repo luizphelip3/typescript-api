@@ -1,17 +1,25 @@
 import { Router } from 'express';
-import { v4 as uuidv4 } from 'uuid';
+import { Category } from '../model/Category';
 
 const categoriesRoutes = Router();
 
-const categories = [];
+const categories: Category[] = [];
 
 categoriesRoutes.post("/", (req, res) => {
 
-    const { name, description } = req.body;
+    const { name, description } = req.body
 
-    categories.push({ name, description, id: uuidv4() })
+    const category: Category = new Category();
 
-    return res.status(201).send(categories)
+    Object.assign(category, {
+        name,
+        description,
+        created_at: new Date()
+    })
+
+    categories.push(category)
+
+    return res.status(201).send(category)
 })
 
 export { categoriesRoutes };
