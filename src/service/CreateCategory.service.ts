@@ -1,3 +1,7 @@
-class CreateCategoryService{}
+class CreateCategoryService{
+
+    execute():
+
+}
 
 export { CreateCategoryService };
