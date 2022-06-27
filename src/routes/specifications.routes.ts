@@ -6,14 +6,16 @@ const specificationsRoutes = Router();
 
 const specificationsRepository = new SpecificationsRepository();
 
-specificationsRoutes.post("/", (req, res) =>{
-    const {name, description} = req.body;
+specificationsRoutes.post("/", (req, res) => {
+    const { name, description } = req.body;
     
-    const createSpecificationsService = new CreateSpecificationsService(specificationsRepository);
-    
-    const result = createSpecificationsService.execute({name, description})
+    const createSpecificationsService = new CreateSpecificationsService(
+        specificationsRepository
+    );
 
-    return res.status(201).send(result)
-})
+    const result = createSpecificationsService.execute({ name, description });
+
+    return res.status(201).send(result);
+});
 
 export { specificationsRoutes };
